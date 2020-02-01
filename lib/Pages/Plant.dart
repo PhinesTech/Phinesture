@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Widgets/LoginCard.dart';
 
-class LogIn extends StatefulWidget {
+class Plant extends StatefulWidget {
   @override
-  _LogInState createState() => new _LogInState();
+  _PlantState createState() => new _PlantState();
 }
 
-class _LogInState extends State<LogIn> {
+class _PlantState extends State<Plant> {
   bool _isSelected = false;
-
-  void _radio() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
 
   Widget radioButton(bool isSelected) => Container(
         width: 16.0,
@@ -78,7 +72,7 @@ class _LogInState extends State<LogIn> {
                         width: ScreenUtil.getInstance().setWidth(110),
                         height: ScreenUtil.getInstance().setHeight(110),
                       ),
-                      Text("athena",
+                      Text("Plant Page",
                           style: TextStyle(
                               fontFamily: "Poppins-Bold",
                               fontSize: ScreenUtil.getInstance().setSp(46),

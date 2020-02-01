@@ -5,6 +5,7 @@ import 'Pages/Camera.dart';
 import 'Pages/Email.dart';
 import 'Pages/Home.dart';
 import 'Pages/Search.dart';
+import 'Pages/Plant.dart';
 
 void main() {
   runApp(
@@ -12,7 +13,7 @@ void main() {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
-            return MaterialPageRoute(builder: (context) => LogIn());
+            return MaterialPageRoute(builder: (context) => Plant()); // temporary
             break;
           case '/home':
             return MaterialPageRoute(builder: (context) => Home());
