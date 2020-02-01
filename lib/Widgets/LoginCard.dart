@@ -57,7 +57,7 @@ class LoginCard extends StatelessWidget {
               controller: password,
               obscureText: true,
               decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: "password",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
             ),
             SizedBox(
@@ -69,7 +69,7 @@ class LoginCard extends StatelessWidget {
                 InkWell(
                   child: Container(
                     width: ScreenUtil.getInstance().setWidth(590),
-                    height: ScreenUtil.getInstance().setHeight(100),
+                    height: ScreenUtil.getInstance().setHeight(50),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
@@ -92,7 +92,7 @@ class LoginCard extends StatelessWidget {
                           }
                         },
                         child: Center(
-                          child: Text("SIGNIN",
+                          child: Text("SIGN IN",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: "Poppins-Bold",

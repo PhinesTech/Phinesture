@@ -70,7 +70,7 @@ class _EmailState extends State<Email> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Email Template",
+                    Text("Hello, (User)",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 44.0,
