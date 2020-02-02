@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class Profile extends StatefulWidget{
-  @override
-_ProfileState createState() => new _ProfileState();
+// class Profile extends StatefulWidget{
+//   @override
+// _ProfileState createState() => new _ProfileState();
 
-}
+// }
 
-class Profile extends State<Profile> {
+// class Profile extends State<Profile> {
 
-}
+// }
 
-Widget build(BuildContext context) {
+// Widget build(BuildContext context) {
   
-}
+// }
 
 
 

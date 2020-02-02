@@ -25,6 +25,10 @@ dependencies:
   cupertino_icons: ^0.1.2
   image_picker: ^0.6.0+9
   flutter_screenutil: ^0.4.2
+  firebase_core: ^0.4.3+3
+  firebase_auth: ^0.15.4
+  cloud_firestore: ^0.13.0+1
+  # firebase_in_app_messaging: ^0.1.1+1
 
 dev_dependencies:
   flutter_test:

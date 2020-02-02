@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,12 +19,15 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context).settings.arguments;
+
     PageController controller = PageController(initialPage: images.length - 1);
     controller.addListener(() {
       setState(() {
         currentPage = controller.page;
       });
     });
+
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -71,7 +75,7 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Hello, (User)",
+                    Text("Hello, ${args.toString().split(",")[0].substring(1)}",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 44.0,
@@ -123,13 +127,11 @@ class _HomeState extends State<Home> {
                                                 color: Colors.white,
                                                 fontFamily: "Poppins-Bold",
                                                 fontSize: 18,
-                                                letterSpacing: 1
-                                            )           
+                                                letterSpacing: 1)),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
                               ),
                             ],
                           ),
@@ -139,24 +141,24 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-              
-
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  margin: const EdgeInsets.only(top: 100.0, ),
-                  
-                  child: RaisedButton(
-                    
-                    onPressed: () {},
-                    child: const Text('Gallery', style: TextStyle(fontSize: 30,)),
-                    color: Colors.blue,
-                    textColor: Colors.white,
-                    elevation: 10,
-                  ),
-                )
-              )
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    margin: const EdgeInsets.only(
+                      top: 100.0,
+                    ),
+                    child: RaisedButton(
+                      onPressed: () {},
+                      child: const Text('Gallery',
+                          style: TextStyle(
+                            fontSize: 30,
+                          )),
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      elevation: 10,
+                    ),
+                  ))
             ],
           ),
         ),
@@ -179,8 +181,8 @@ class CardScrollWidget extends StatelessWidget {
       child: LayoutBuilder(builder: (context, contraints) {
         var width = contraints.maxWidth;
         var height = contraints.maxHeight;
-        print('width: ' + width.toString());
-        print('height: ' + height.toString());
+        // print('width: ' + width.toString());
+        // print('height: ' + height.toString());
 
         var safeWidth = width - 2 * padding;
         var safeHeight = height - 2 * padding;
