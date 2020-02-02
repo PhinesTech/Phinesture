@@ -32,8 +32,8 @@ Future<void> main() async {
       routes: {
         '/': (BuildContext context) => LogIn(),
         // '/home': (BuildContext context) => MessageList(firestore: firestore),
-        '/home': (BuildContext context) => Home(),
-        // '/profile': (BuildContext context) => Profile(),
+        '/home': (BuildContext context) => Home(firestore: firestore),
+        '/profile': (BuildContext context) => Profile(),
         '/plant': (BuildContext context) => Plant(),
       },
       debugShowCheckedModeBanner: false,

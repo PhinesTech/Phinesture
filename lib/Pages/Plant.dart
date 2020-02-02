@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Plant extends StatefulWidget {
   @override
@@ -7,6 +11,17 @@ class Plant extends StatefulWidget {
 }
 
 class _PlantState extends State<Plant> {
+  File _image;
+  var ar = false;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
@@ -21,28 +36,17 @@ class _PlantState extends State<Plant> {
       // Scaffold for layout
       Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          actions: <Widget>[
-          IconButton(
-            icon: Icon(
+        appBar: AppBar(actions: <Widget>[
+          FloatingActionButton(
+            onPressed: getImage,
+            tooltip: 'Pick Image',
+            child: Icon(
               Icons.add_a_photo,
               color: Colors.white,
               size: 30.0,
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
-          IconButton(
-            icon: Icon(
-              Icons.add_a_photo,
-              color: Colors.white,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+          Image.asset('assets/ar-off.png')
         ]),
         body: Center(
             child: Column(
