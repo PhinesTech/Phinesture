@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Plant extends StatefulWidget {
   @override
@@ -9,19 +10,7 @@ class _PlantState extends State<Plant> {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   decoration: BoxDecoration(
-    //     image: DecorationImage(
-    //       image: AssetImage("assets/window_background.png"),
-    //       fit: BoxFit.cover,
-    //     ),
-    //   ),
-    //   child: new Scaffold(
-    //     body: Center(
-    //       child: Text('Scaffold child'), // plant image
-    //     ),
-    //   ),
-    // );
+
     return Stack(
       children: <Widget>[
 
@@ -40,11 +29,47 @@ class _PlantState extends State<Plant> {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            title: Text('Sample Title'), //Insert upper icons
-          ),
+            title: Text('hello'),
+            items: const <AppBarItem>[
+              AppBarItem(
+              icon: Icon(Icons.add_a_photo),
+              title: Text('Camera'),
+              ),
+              AppBarItem(
+              icon: Icon(Icons.check),
+              title: Text('AR'),
+              ),
+            ]
 
           body: Center(
-            child: Image.asset('assets/stage9.png'), //Insert plant image
+            child: Column(
+              children: <Widget>[
+
+              Text( // plant name
+                'Sunny',
+                style: TextStyle(
+                  fontFamily: "GalleriaSans",
+                  fontSize: 35,
+                  letterSpacing: .6,
+                  fontWeight: FontWeight.bold,
+                )
+              ),
+
+              Text( // type of plant
+                'Common Sunflower',
+                style: TextStyle(
+                  fontFamily: "GalleriaSans",
+                  fontSize: 20,
+                  letterSpacing: .5,
+                  fontWeight: FontWeight.normal,
+                )
+              ),
+
+              Expanded( // plant image
+                child: Image.asset('assets/stage9.png'),
+               ),
+            ],)
+            //Insert plant image
           ),
 
           bottomNavigationBar: BottomAppBar(
