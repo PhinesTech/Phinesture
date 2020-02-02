@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginCard extends StatelessWidget {
-  final username = TextEditingController();
-  final password = TextEditingController();
+  final typedInUsername = TextEditingController();
+  final typedInPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class LoginCard extends StatelessWidget {
                     fontFamily: "Poppins-Medium",
                     fontSize: ScreenUtil.getInstance().setSp(26))),
             TextField(
-              controller: username,
+              controller: typedInUsername,
               decoration: InputDecoration(
                   hintText: "username",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
@@ -54,10 +54,10 @@ class LoginCard extends StatelessWidget {
                     fontFamily: "Poppins-Medium",
                     fontSize: ScreenUtil.getInstance().setSp(26))),
             TextField(
-              controller: password,
+              controller: typedInPassword,
               obscureText: true,
               decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: "password",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
             ),
             SizedBox(
@@ -69,7 +69,7 @@ class LoginCard extends StatelessWidget {
                 InkWell(
                   child: Container(
                     width: ScreenUtil.getInstance().setWidth(590),
-                    height: ScreenUtil.getInstance().setHeight(100),
+                    height: ScreenUtil.getInstance().setHeight(50),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
@@ -84,15 +84,13 @@ class LoginCard extends StatelessWidget {
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () {
-                          if (username.text == 'admin' &&
-                              password.text == 'catcard') {
-                            Navigator.pushNamed(context, '/home');
-                          } else {
-                            Navigator.pushNamed(context, '/home');
-                          }
+                          Navigator.pushNamed(context, '/home', arguments: [
+                            typedInUsername.text.toString(),
+                            typedInPassword.text.toString()
+                          ]);
                         },
                         child: Center(
-                          child: Text("SIGNIN",
+                          child: Text("SIGN IN",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: "Poppins-Bold",

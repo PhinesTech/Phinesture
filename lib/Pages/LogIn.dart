@@ -78,7 +78,7 @@ class _LogInState extends State<LogIn> {
                         width: ScreenUtil.getInstance().setWidth(110),
                         height: ScreenUtil.getInstance().setHeight(110),
                       ),
-                      Text("athena",
+                      Text("Phinesture",
                           style: TextStyle(
                               fontFamily: "Poppins-Bold",
                               fontSize: ScreenUtil.getInstance().setSp(46),
@@ -95,7 +95,7 @@ class _LogInState extends State<LogIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       horizontalLine(),
-                      Text("CatiClick Login",
+                      Text("Phinesture Login",
                           style: TextStyle(
                               fontSize: 16.0, fontFamily: "Poppins-Medium")),
                       horizontalLine()

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "685688366527",
+    "firebase_url": "https://phinesture.firebaseio.com",
+    "project_id": "phinesture",
+    "storage_bucket": "phinesture.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685688366527:android:05a526c0720170829ced0a",
+        "android_client_info": {
+          "package_name": "com.example.phinesture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685688366527-mivqdaig73jmcf36dr1aukhh5so76l3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWZLMhQL8Pe2h_fI4yig2mKJ2wlzda_OQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685688366527-mivqdaig73jmcf36dr1aukhh5so76l3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
