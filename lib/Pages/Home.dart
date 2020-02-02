@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Constants//data.dart';
+import '../Constants/data.dart';
 import '../Widgets/CustomIcons.dart';
 
 class Home extends StatefulWidget {
@@ -65,9 +66,6 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-
-
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
@@ -92,13 +90,73 @@ class _HomeState extends State<Home> {
                       controller: controller,
                       reverse: true,
                       itemBuilder: (context, index) {
-                        return Container();
-                        
+                        return Container(
+                          margin: const EdgeInsets.only(top: 420.0, left: 15.0),
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              InkWell(
+                                child: Container(
+                                  width: ScreenUtil.getInstance().setWidth(590),
+                                  height:
+                                      ScreenUtil.getInstance().setHeight(50),
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(colors: [
+                                        Color(0xFF17ead9),
+                                        Color(0xFF6078ea)
+                                      ]),
+                                      borderRadius: BorderRadius.circular(40.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color(0xFF6078ea)
+                                                .withOpacity(.3),
+                                            offset: Offset(0.0, 8.0),
+                                            blurRadius: 8.0)
+                                      ]),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      child: Center(
+                                        child: Text("Name of Plant",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 18,
+                                                letterSpacing: 1
+                                            )           
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                     ),
                   )
                 ],
               ),
+              
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: const EdgeInsets.only(top: 100.0, ),
+                  
+                  child: RaisedButton(
+                    
+                    onPressed: () {},
+                    child: const Text('Gallery', style: TextStyle(fontSize: 30,)),
+                    color: Colors.blue,
+                    textColor: Colors.white,
+                    elevation: 10,
+                  ),
+                )
+              )
             ],
           ),
         ),
@@ -121,8 +179,8 @@ class CardScrollWidget extends StatelessWidget {
       child: LayoutBuilder(builder: (context, contraints) {
         var width = contraints.maxWidth;
         var height = contraints.maxHeight;
-        print('width: ' +  width.toString());
-        print('height: ' +  height.toString());
+        print('width: ' + width.toString());
+        print('height: ' + height.toString());
 
         var safeWidth = width - 2 * padding;
         var safeHeight = height - 2 * padding;
