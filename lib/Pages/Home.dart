@@ -8,10 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../Widgets/CustomIcons.dart';
 
-List<String> images = [
-  "assets/succulent.png",
-  "assets/sunflower.png"
-];
+List<String> images = ["assets/succulent.png", "assets/sunflower.png"];
 
 class Home extends StatefulWidget {
   Home({this.firestore});
@@ -44,169 +41,148 @@ class _HomeState extends State<Home> {
       });
     });
 
-    return StreamBuilder<DocumentSnapshot>(
-      stream: Firestore.instance
-          .collection('users')
-          .document("admin")
-          .snapshots(includeMetadataChanges: false),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return new Text('Loading...');
-          default:
-            plants = snapshot.data.data;
-            print(plants);
-            return Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [
-                    Color(0xFF4CAF50),
-                    Color(0xFF6078ea),
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+            Color(0xFF4CAF50),
+            Color(0xFF6078ea),
+          ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              tileMode: TileMode.clamp)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 12.0, right: 12.0, top: 30.0, bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        Icons.navigate_before,
+                        color: Colors.white,
+                        size: 30.0,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.account_circle,
+                        color: Colors.white,
+                        size: 30.0,
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/profile',
+                            arguments: username);
+                      },
+                    )
                   ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      tileMode: TileMode.clamp)),
-              child: Scaffold(
-                backgroundColor: Colors.transparent,
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 12.0, right: 12.0, top: 30.0, bottom: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(
-                                Icons.navigate_before,
-                                color: Colors.white,
-                                size: 30.0,
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                Icons.account_circle,
-                                color: Colors.white,
-                                size: 30.0,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/profile',
-                                    arguments: username);
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("Hello, $username",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 44.0,
-                                  fontFamily: "Calibre-Semibold",
-                                  letterSpacing: 1.0,
-                                )),
-                          ],
-                        ),
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          CardScrollWidget(currentPage),
-                          Positioned.fill(
-                            child: PageView.builder(
-                              itemCount: images.length,
-                              controller: controller,
-                              reverse: true,
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: const EdgeInsets.only(
-                                      top: 420.0, left: 40.0),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.pushNamed(context, '/plant', arguments: plants);
-                                        },
-                                        child: Container(
-                                          width: ScreenUtil.getInstance()
-                                              .setWidth(500),
-                                          height: ScreenUtil.getInstance()
-                                              .setHeight(50),
-                                          decoration: BoxDecoration(
-                                              gradient: LinearGradient(colors: [
-                                                Color(0xFF17ead9),
-                                                Color(0xFF6078ea)
-                                              ]),
-                                              borderRadius:
-                                                  BorderRadius.circular(40.0),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Color(0xFF6078ea)
-                                                        .withOpacity(.3),
-                                                    offset: Offset(0.0, 8.0),
-                                                    blurRadius: 8.0)
-                                              ]),
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            child: InkWell(
-                                              child: Center(
-                                                child: Text("Name of Plant",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontFamily:
-                                                            "Poppins-Bold",
-                                                        fontSize: 18,
-                                                        letterSpacing: 1)),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Container(
-                            alignment: Alignment.bottomCenter,
-                            margin: const EdgeInsets.only(
-                              top: 100.0,
-                            ),
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: const Text('Gallery',
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                  )),
-                              color: Colors.blue,
-                              textColor: Colors.white,
-                              elevation: 10,
-                            ),
-                          ))
-                    ],
-                  ),
                 ),
               ),
-            );
-        }
-      },
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Hello, $username",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 44.0,
+                          fontFamily: "Calibre-Semibold",
+                          letterSpacing: 1.0,
+                        )),
+                  ],
+                ),
+              ),
+              Stack(
+                children: <Widget>[
+                  CardScrollWidget(currentPage),
+                  Positioned.fill(
+                    child: PageView.builder(
+                      itemCount: images.length,
+                      controller: controller,
+                      reverse: true,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.only(top: 420.0, left: 40.0),
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/plant',
+                                      arguments: plants);
+                                },
+                                child: Container(
+                                  width: ScreenUtil.getInstance().setWidth(500),
+                                  height:
+                                      ScreenUtil.getInstance().setHeight(50),
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(colors: [
+                                        Color(0xFF17ead9),
+                                        Color(0xFF6078ea)
+                                      ]),
+                                      borderRadius: BorderRadius.circular(40.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color(0xFF6078ea)
+                                                .withOpacity(.3),
+                                            offset: Offset(0.0, 8.0),
+                                            blurRadius: 8.0)
+                                      ]),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      child: Center(
+                                        child: Text((currentPage == 1) ? "Sunflower" : "Succulent",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "Poppins-Bold",
+                                                fontSize: 18,
+                                                letterSpacing: 1)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    margin: const EdgeInsets.only(
+                      top: 100.0,
+                    ),
+                    child: RaisedButton(
+                      onPressed: () {},
+                      child: const Text('Gallery',
+                          style: TextStyle(
+                            fontSize: 30,
+                          )),
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      elevation: 10,
+                    ),
+                  ))
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

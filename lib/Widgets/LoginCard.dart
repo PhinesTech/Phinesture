@@ -68,7 +68,7 @@ class LoginCard extends StatelessWidget {
               children: <Widget>[
                 InkWell(
                   child: Container(
-                    width: ScreenUtil.getInstance().setWidth(590),
+                    width: ScreenUtil.getInstance().setWidth(560),
                     height: ScreenUtil.getInstance().setHeight(50),
                     decoration: BoxDecoration(
                         gradient: LinearGradient(

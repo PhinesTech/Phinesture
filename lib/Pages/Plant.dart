@@ -71,7 +71,7 @@ class _PlantState extends State<Plant> {
                 )),
             Expanded(
               // plant image
-              child: Image.asset('assets/stage9.png'),
+              child: Image.asset('assets/sunflower.gif'),
             ),
           ],
         )
